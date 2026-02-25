@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pokémon Randomizer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Team Builder</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Pokémon Randomizer</h1>
-    <button onclick="getRandom()">Get Random Pokémon!</button>
+    <h1>Pokémon Team Builder</h1>
 
-    <h2>Pokémon</h2>
-    <ul id="pokemonList"></ul>
+    <div id="pokemonContainer" class="pokemon-container"></div>
+
+    <button id="rollButton">Roll Pokémon</button>
 
     <h2>Abilities</h2>
-    <ul id="abilityList"></ul>
+    <ul id="abilityList" class="ability-list"></ul>
 
     <script src="/static/script.js"></script>
 </body>
