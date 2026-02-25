@@ -23,10 +23,24 @@ function showRandomPokemon() {
     optionsDiv.innerHTML = '';
 
     let pool = [...pokemonData];
+    if (enforceAdultOnStartup) pool = pool.filter(p => p.adult === true);
 
-    // Only adult Pokémon if enforced
-    if (enforceAdultOnStartup) {
-    pool = pool.filter(p => p.adult === true);
+    if (!allowDuplicatePokemon) {
+        const namesInTeam = team.map(t => t.pokemon.name);
+        pool = pool.filter(p => !namesInTeam.includes(p.name));
+    }
+
+    const shuffled = pool.sort(() => 0.5 - Math.random());
+    shuffled.slice(0, 3).forEach(poke => {
+        const card = document.createElement('div');
+        card.className = 'pokemon-card';
+        card.innerHTML = `
+            <div>${poke.name}</div>
+            <div class="types">${poke.types.join(' / ')}</div>
+        `;
+        card.onclick = () => selectPokemon(poke);
+        optionsDiv.appendChild(card);
+    });
 }
 
     // Remove Pokémon already in team if duplicates not allowed
@@ -156,6 +170,7 @@ document.getElementById('toggle-adult-pokemon').onchange = (e) => {
 };
 
 fetchData();
+
 
 
 
