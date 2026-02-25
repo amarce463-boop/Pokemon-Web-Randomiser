@@ -23,12 +23,11 @@ body {
 
 /* Horizontal layout for Pokémon and abilities */
 .horizontal-options {
-  display: flex;
-  justify-content: flex-start;
-  gap: 15px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+    overflow-x: auto;
+    min-height: 100px;       /* important to see cards */
 }
 
 .horizontal-options::-webkit-scrollbar {
@@ -44,15 +43,14 @@ body {
   background: transparent;
 }
 
-/* Pokémon and Ability Cards */
 .pokemon-card, .ability-card {
-  background: #e0e0e0;
-  padding: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  min-width: 100px;
-  text-align: center;
-  transition: transform 0.1s;
+    background: #e0e0e0;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    min-width: 120px;       /* ensure cards are wide enough */
+    text-align: center;
+    flex-shrink: 0;         /* don't shrink cards */
 }
 
 .pokemon-card:hover, .ability-card:hover {
@@ -136,3 +134,4 @@ button:hover {
   display: block;
   margin-bottom: 5px;
 }
+
