@@ -1,3 +1,4 @@
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   background: #f2f2f2;
@@ -20,6 +21,68 @@ body {
   box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
 }
 
+/* Horizontal layout for Pokémon and abilities */
+.horizontal-options {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.horizontal-options::-webkit-scrollbar {
+  height: 6px;
+}
+
+.horizontal-options::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 3px;
+}
+
+.horizontal-options::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Pokémon and Ability Cards */
+.pokemon-card, .ability-card {
+  background: #e0e0e0;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 100px;
+  text-align: center;
+  transition: transform 0.1s;
+}
+
+.pokemon-card:hover, .ability-card:hover {
+  transform: scale(1.05);
+}
+
+/* Pokémon Types */
+.types {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Ability Description Tooltip */
+.ability-card:hover::after {
+  content: attr(data-desc);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  background: #333;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  text-align: left;
+  z-index: 10;
+}
+
+/* Team Slots */
 .team-slots {
   display: flex;
   justify-content: space-between;
@@ -43,51 +106,7 @@ body {
   height: 60px;
 }
 
-.pokemon-options, .ability-options {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 15px;
-}
-
-.pokemon-card, .ability-card {
-  background: #e0e0e0;
-  padding: 10px;
-  border-radius: 10px;
-  margin: 5px;
-  width: 120px;
-  cursor: pointer;
-  position: relative;
-}
-
-.pokemon-card img {
-  width: 80px;
-  height: 80px;
-}
-
-.pokemon-card .types {
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.ability-card:hover::after {
-  content: attr(data-desc);
-  position: absolute;
-  bottom: 110%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
-  background: #333;
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 12px;
-  text-align: left;
-  z-index: 10;
-}
-
-.hidden { display: none; }
-
+/* Buttons */
 button {
   margin-top: 10px;
   padding: 10px 15px;
@@ -98,4 +117,22 @@ button {
   cursor: pointer;
 }
 
-button:hover { background: #45a049; }
+button:hover {
+  background: #45a049;
+}
+
+/* Hidden Elements */
+.hidden {
+  display: none;
+}
+
+/* Settings Panel Styling */
+.settings-panel {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: left;
+}
+.settings-panel label {
+  display: block;
+  margin-bottom: 5px;
+}
