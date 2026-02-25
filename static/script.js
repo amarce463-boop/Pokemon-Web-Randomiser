@@ -3,6 +3,10 @@ let abilitiesData = {};
 let team = [];
 let selectedPokemon = null;
 let selectedAbility = null;
+let allowDuplicatePokemon = false;   // toggle for duplicate Pokémon
+let allowDuplicateAbilities = false; // toggle for duplicate abilities
+let allowAdultPokemon = true;        // toggle adult Pokémon on/off
+let enforceAdultOnStartup = true;    // force adult Pokémon initially
 
 // Fetch JSONs from server
 async function fetchData() {
@@ -124,5 +128,6 @@ document.getElementById('reset-btn').onclick = () => {
 }
 
 fetchData();
+
 
 
