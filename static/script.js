@@ -65,17 +65,19 @@ function showAbilities(poke) {
     const abilDiv = document.getElementById('ability-options');
     abilDiv.innerHTML = '';
 
-    // Get all ability names from abilitiesData
-    const allAbilities = Object.keys(abilitiesData);
+    let pool = [...Object.keys(abilitiesData)];
 
-    // Shuffle and pick 3 random abilities
-    const shuffled = [...allAbilities].sort(() => 0.5 - Math.random());
-    const randomAbilities = shuffled.slice(0, 3);
+    // Remove abilities already selected in team if duplicates not allowed
+    if(!allowDuplicateAbilities){
+        const selectedAbilities = team.map(t => t.ability);
+        pool = pool.filter(ab => !selectedAbilities.includes(ab));
+    }
 
-    randomAbilities.forEach(ab => {
+    const shuffled = pool.sort(() => 0.5 - Math.random());
+    shuffled.slice(0,3).forEach(ab => {
         const card = document.createElement('div');
         card.className = 'ability-card';
-        card.setAttribute('data-desc', abilitiesData[ab] || 'No description available');
+        card.setAttribute('data-desc', abilitiesData[ab] || '');
         card.textContent = ab;
         card.onclick = () => selectAbility(ab, card);
         abilDiv.appendChild(card);
@@ -154,6 +156,7 @@ document.getElementById('toggle-adult-pokemon').onchange = (e) => {
 };
 
 fetchData();
+
 
 
 
