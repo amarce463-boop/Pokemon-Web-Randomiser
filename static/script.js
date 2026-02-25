@@ -22,9 +22,8 @@ function showRandomPokemon() {
         const card = document.createElement('div');
         card.className = 'pokemon-card';
         card.innerHTML = `
-            <img src="${poke.sprite}" alt="${poke.name}">
             <div>${poke.name}</div>
-            <div class="types">${poke.types.join(' / ')}</div>
+            <div class="types">${(poke.types || []).join(' / ')}</div>
         `;
         card.onclick = () => selectPokemon(poke);
         optionsDiv.appendChild(card);
@@ -41,11 +40,21 @@ function selectPokemon(poke) {
 function showAbilities(poke) {
     const abilDiv = document.getElementById('ability-options');
     abilDiv.innerHTML = '';
-    const shuffled = [...poke.abilities].sort(() => 0.5 - Math.random());
+
+    // Default to empty array if abilities missing
+    const abilitiesList = Array.isArray(poke.abilities) ? poke.abilities : [];
+
+    if(abilitiesList.length === 0){
+        abilDiv.innerHTML = '<div>No abilities available</div>';
+        document.getElementById('ability-selection').classList.remove('hidden');
+        return;
+    }
+
+    const shuffled = [...abilitiesList].sort(() => 0.5 - Math.random());
     shuffled.slice(0,3).forEach(ab => {
         const card = document.createElement('div');
         card.className = 'ability-card';
-        card.setAttribute('data-desc', abilitiesData[ab] || '');
+        card.setAttribute('data-desc', abilitiesData[ab] || 'No description available');
         card.textContent = ab;
         card.onclick = () => selectAbility(ab, card);
         abilDiv.appendChild(card);
@@ -84,7 +93,6 @@ function updateTeamPanel() {
             const poke = team[idx].pokemon;
             const abil = team[idx].ability;
             slot.innerHTML = `
-                <img src="${poke.sprite}" alt="${poke.name}">
                 <div>${poke.name}</div>
                 <div style="font-size:10px">${abil}</div>
             `;
