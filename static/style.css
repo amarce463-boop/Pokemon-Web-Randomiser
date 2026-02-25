@@ -150,6 +150,15 @@ body {
     display: block;
 }
 
+.ability-desc {
+    margin-top: 10px;
+    padding: 10px;
+    background: #222;
+    color: white;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
 /* Buttons */
 button {
   margin-top: 10px;
@@ -179,3 +188,4 @@ button:hover {
   display: block;
   margin-bottom: 5px;
 }
+
