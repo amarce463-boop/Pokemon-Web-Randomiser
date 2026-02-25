@@ -41,17 +41,14 @@ function showAbilities(poke) {
     const abilDiv = document.getElementById('ability-options');
     abilDiv.innerHTML = '';
 
-    // Default to empty array if abilities missing
-    const abilitiesList = Array.isArray(poke.abilities) ? poke.abilities : [];
+    // Get all ability names from abilitiesData
+    const allAbilities = Object.keys(abilitiesData);
 
-    if(abilitiesList.length === 0){
-        abilDiv.innerHTML = '<div>No abilities available</div>';
-        document.getElementById('ability-selection').classList.remove('hidden');
-        return;
-    }
+    // Shuffle and pick 3 random abilities
+    const shuffled = [...allAbilities].sort(() => 0.5 - Math.random());
+    const randomAbilities = shuffled.slice(0, 3);
 
-    const shuffled = [...abilitiesList].sort(() => 0.5 - Math.random());
-    shuffled.slice(0,3).forEach(ab => {
+    randomAbilities.forEach(ab => {
         const card = document.createElement('div');
         card.className = 'ability-card';
         card.setAttribute('data-desc', abilitiesData[ab] || 'No description available');
@@ -59,6 +56,7 @@ function showAbilities(poke) {
         card.onclick = () => selectAbility(ab, card);
         abilDiv.appendChild(card);
     });
+
     document.getElementById('ability-selection').classList.remove('hidden');
 }
 
@@ -111,3 +109,4 @@ document.getElementById('reset-btn').onclick = () => {
 }
 
 fetchData();
+
