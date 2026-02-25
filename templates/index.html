@@ -6,43 +6,59 @@
 <title>Pokémon Randomizer</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 <div class="container">
-    <h1>Pokémon Team Builder</h1>
 
-    <!-- Options Row (horizontal, above team) -->
-    <div class="options-row">
-        <label><input type="checkbox" id="toggle-adult-pokemon" checked> Adult Pokémon</label>
-        <label><input type="checkbox" id="toggle-duplicates-pokemon"> Duplicate Pokémon</label>
-        <label><input type="checkbox" id="toggle-duplicates-abilities"> Duplicate Abilities</label>
+<h1>Pokémon Team Builder</h1>
+
+<!-- SETTINGS (kept simple & stable) -->
+<div class="settings-panel">
+    <label>
+        <input type="checkbox" id="toggle-adult-pokemon" checked>
+        Allow NFE Pokémon
+    </label>
+
+    <label>
+        <input type="checkbox" id="toggle-duplicates-pokemon">
+        Allow duplicate Pokémon
+    </label>
+
+    <label>
+        <input type="checkbox" id="toggle-duplicates-abilities">
+        Allow duplicate abilities
+    </label>
+</div>
+
+<!-- TEAM PANEL -->
+<div class="team-panel">
+    <h2>Your Team</h2>
+
+    <div class="team-slots">
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
     </div>
 
-    <!-- Pokémon Selection Panel -->
-    <div class="selection-panel">
-        <h2>Select a Pokémon</h2>
-        <div id="pokemon-options" class="horizontal-options"></div>
-    </div>
+    <button id="reset-btn">Reset Team</button>
+</div>
 
-    <!-- Ability Selection Panel -->
-    <div id="ability-selection" class="ability-options-panel hidden">
-        <h2>Select an Ability</h2>
-        <div id="ability-options" class="horizontal-options"></div>
-        <button id="confirm-ability">Confirm Ability</button>
-    </div>
+<!-- POKEMON SELECTION -->
+<div class="selection-panel">
+    <h2>Select a Pokémon</h2>
+    <div id="pokemon-options" class="pokemon-options"></div>
+</div>
 
-    <!-- Team Panel -->
-    <div class="team-panel">
-        <h2>Your Team</h2>
-        <div class="team-slots">
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-        </div>
-        <button id="reset-btn">Reset Team</button>
-    </div>
+<!-- ABILITY SELECTION -->
+<div id="ability-selection" class="selection-panel hidden">
+    <h2>Select an Ability</h2>
+    <div id="ability-options" class="ability-options"></div>
+    <button id="confirm-ability">Confirm Ability</button>
+</div>
+
 </div>
 
 <script src="{{ url_for('static', filename='script.js') }}"></script>
