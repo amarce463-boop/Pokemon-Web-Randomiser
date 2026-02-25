@@ -8,39 +8,43 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pokémon Team Builder</h1>
-        
-        <div class="team-panel">
-            <h2>Your Team</h2>
-            <div class="team-slots">
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-                <div class="slot"></div>
-            </div>
-            <button id="reset-btn">Reset Team</button>
-        </div>
+    <h1>Pokémon Team Builder</h1>
 
-        <div class="selection-panel">
-            <h2>Select a Pokémon</h2>
-            <div id="pokemon-options" class="pokemon-options"></div>
-            <div class="settings-panel">
-              <label><input type="checkbox" id="toggle-duplicates-pokemon"> Allow duplicate Pokémon</label><br>
-              <label><input type="checkbox" id="toggle-duplicates-abilities"> Allow duplicate abilities</label><br>
-              <label><input type="checkbox" id="toggle-adult-pokemon" checked> Enable adult Pokémon</label>
-            </div>
-        </div>
+    <!-- Selection Panel: Pokémon and Abilities -->
+    <div class="selection-panel">
+        <h2>Select a Pokémon</h2>
+        <div id="pokemon-options" class="pokemon-options horizontal-options"></div>
 
-        <div id="ability-selection" class="selection-panel hidden">
+        <div id="ability-selection" class="ability-options-panel hidden">
             <h2>Select an Ability</h2>
-            <div id="ability-options" class="ability-options"></div>
+            <div id="ability-options" class="ability-options horizontal-options"></div>
             <button id="confirm-ability">Confirm Ability</button>
         </div>
+
+        <div class="settings-panel">
+          <label><input type="checkbox" id="toggle-duplicates-pokemon"> Allow duplicate Pokémon</label><br>
+          <label><input type="checkbox" id="toggle-duplicates-abilities"> Allow duplicate abilities</label><br>
+          <label><input type="checkbox" id="toggle-adult-pokemon" checked> Enable adult Pokémon</label>
+        </div>
     </div>
+
+    <!-- Team Panel -->
+    <div class="team-panel">
+        <h2>Your Team</h2>
+        <div class="team-slots">
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+        </div>
+        <button id="reset-btn">Reset Team</button>
+    </div>
+</div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
 
