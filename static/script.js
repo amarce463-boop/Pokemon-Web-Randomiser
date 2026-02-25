@@ -127,7 +127,20 @@ document.getElementById('reset-btn').onclick = () => {
     showRandomPokemon();
 }
 
+document.getElementById('toggle-duplicates-pokemon').onchange = (e) => {
+    allowDuplicatePokemon = e.target.checked;
+};
+
+document.getElementById('toggle-duplicates-abilities').onchange = (e) => {
+    allowDuplicateAbilities = e.target.checked;
+};
+
+document.getElementById('toggle-adult-pokemon').onchange = (e) => {
+    allowAdultPokemon = e.target.checked;
+};
+
 fetchData();
+
 
 
 
