@@ -26,6 +26,11 @@
         <div class="selection-panel">
             <h2>Select a Pokémon</h2>
             <div id="pokemon-options" class="pokemon-options"></div>
+            <div class="settings-panel">
+              <label><input type="checkbox" id="toggle-duplicates-pokemon"> Allow duplicate Pokémon</label><br>
+              <label><input type="checkbox" id="toggle-duplicates-abilities"> Allow duplicate abilities</label><br>
+              <label><input type="checkbox" id="toggle-adult-pokemon" checked> Enable adult Pokémon</label>
+            </div>
         </div>
 
         <div id="ability-selection" class="selection-panel hidden">
@@ -38,3 +43,4 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
