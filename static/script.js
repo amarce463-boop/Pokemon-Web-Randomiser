@@ -43,25 +43,6 @@ function showRandomPokemon() {
     });
 }
 
-    // Remove Pokémon already in team if duplicates not allowed
-    if(!allowDuplicatePokemon){
-        const namesInTeam = team.map(t => t.pokemon.name);
-        pool = pool.filter(p => !namesInTeam.includes(p.name));
-    }
-
-    const shuffled = pool.sort(() => 0.5 - Math.random());
-    shuffled.slice(0,3).forEach(poke => {
-        const card = document.createElement('div');
-        card.className = 'pokemon-card';
-        card.innerHTML = `
-            <div>${poke.name}</div>
-            <div class="types">${poke.types.join(' / ')}</div>
-        `;
-        card.onclick = () => selectPokemon(poke);
-        optionsDiv.appendChild(card);
-    });
-}
-
 // When a Pokémon is selected
 function selectPokemon(poke) {
     selectedPokemon = poke;
@@ -170,6 +151,7 @@ document.getElementById('toggle-adult-pokemon').onchange = (e) => {
 };
 
 fetchData();
+
 
 
 
