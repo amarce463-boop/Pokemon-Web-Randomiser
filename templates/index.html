@@ -1,51 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pokemon Team Builder</title>
-<link rel="stylesheet" href="/static/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Randomizer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="container">
+        <h1>Pokémon Team Builder</h1>
+        
+        <div class="team-panel">
+            <h2>Your Team</h2>
+            <div class="team-slots">
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+            </div>
+            <button id="reset-btn">Reset Team</button>
+        </div>
 
-<div class="container">
+        <div class="selection-panel">
+            <h2>Select a Pokémon</h2>
+            <div id="pokemon-options" class="pokemon-options"></div>
+        </div>
 
-  <h1>Pokémon Team Builder</h1>
-
-  <!-- Team Panel -->
-  <div id="team-panel" class="team-panel">
-    <h2>Your Team</h2>
-    <div class="team-slots">
-      <!-- 6 empty slots -->
-      <div class="slot" data-index="0"></div>
-      <div class="slot" data-index="1"></div>
-      <div class="slot" data-index="2"></div>
-      <div class="slot" data-index="3"></div>
-      <div class="slot" data-index="4"></div>
-      <div class="slot" data-index="5"></div>
+        <div id="ability-selection" class="selection-panel hidden">
+            <h2>Select an Ability</h2>
+            <div id="ability-options" class="ability-options"></div>
+            <button id="confirm-ability">Confirm Ability</button>
+        </div>
     </div>
-    <button id="reset-btn">Reset Team</button>
-  </div>
 
-  <!-- Random Pokémon Selection -->
-  <div id="pokemon-selection" class="selection-panel">
-    <h2>Choose a Pokémon</h2>
-    <div class="pokemon-options" id="pokemon-options">
-      <!-- Filled dynamically by JS -->
-    </div>
-  </div>
-
-  <!-- Abilities Selection -->
-  <div id="ability-selection" class="selection-panel hidden">
-    <h2>Choose an Ability</h2>
-    <div class="ability-options" id="ability-options">
-      <!-- Filled dynamically -->
-    </div>
-    <button id="confirm-ability">Select Ability</button>
-  </div>
-
-</div>
-
-<script src="/static/app.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
