@@ -25,9 +25,9 @@ function showRandomPokemon() {
     let pool = [...pokemonData];
 
     // Only adult Pokémon if enforced
-    if(enforceAdultOnStartup || !allowAdultPokemon){
-        pool = pool.filter(p => p.adult === true);
-    }
+    if (enforceAdultOnStartup) {
+    pool = pool.filter(p => p.adult === true);
+}
 
     // Remove Pokémon already in team if duplicates not allowed
     if(!allowDuplicatePokemon){
@@ -95,7 +95,7 @@ function selectAbility(ab, card) {
 }
 
 // Confirm ability selection
-#document.getElementById('confirm-ability').onclick = () => {
+document.getElementById('confirm-ability').onclick = () => {
     if(selectedPokemon && selectedAbility){
         if(team.length < 6){
             team.push({pokemon: selectedPokemon, ability: selectedAbility});
@@ -156,6 +156,7 @@ document.getElementById('toggle-adult-pokemon').onchange = (e) => {
 };
 
 fetchData();
+
 
 
 
