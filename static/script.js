@@ -21,13 +21,27 @@ async function fetchData() {
 function showRandomPokemon() {
     const optionsDiv = document.getElementById('pokemon-options');
     optionsDiv.innerHTML = '';
-    const shuffled = [...pokemonData].sort(() => 0.5 - Math.random());
+
+    let pool = [...pokemonData];
+
+    // Only adult Pokémon if enforced
+    if(enforceAdultOnStartup || !allowAdultPokemon){
+        pool = pool.filter(p => p.adult === true);
+    }
+
+    // Remove Pokémon already in team if duplicates not allowed
+    if(!allowDuplicatePokemon){
+        const namesInTeam = team.map(t => t.pokemon.name);
+        pool = pool.filter(p => !namesInTeam.includes(p.name));
+    }
+
+    const shuffled = pool.sort(() => 0.5 - Math.random());
     shuffled.slice(0,3).forEach(poke => {
         const card = document.createElement('div');
         card.className = 'pokemon-card';
         card.innerHTML = `
             <div>${poke.name}</div>
-            <div class="types">${(poke.types || []).join(' / ')}</div>
+            <div class="types">${poke.types.join(' / ')}</div>
         `;
         card.onclick = () => selectPokemon(poke);
         optionsDiv.appendChild(card);
@@ -140,6 +154,7 @@ document.getElementById('toggle-adult-pokemon').onchange = (e) => {
 };
 
 fetchData();
+
 
 
 
