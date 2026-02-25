@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokémon Randomizer</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokémon Randomizer</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="container">
+<div class="container">
     <h1>Pokémon Team Builder</h1>
 
-    <!-- Selection Panel: Pokémon and Abilities -->
+    <!-- Options Row (horizontal, above team) -->
+    <div class="options-row">
+        <label><input type="checkbox" id="toggle-adult-pokemon" checked> Adult Pokémon</label>
+        <label><input type="checkbox" id="toggle-duplicates-pokemon"> Duplicate Pokémon</label>
+        <label><input type="checkbox" id="toggle-duplicates-abilities"> Duplicate Abilities</label>
+    </div>
+
+    <!-- Pokémon Selection Panel -->
     <div class="selection-panel">
         <h2>Select a Pokémon</h2>
-        <div id="pokemon-options" class="pokemon-options horizontal-options"></div>
+        <div id="pokemon-options" class="horizontal-options"></div>
+    </div>
 
-        <div id="ability-selection" class="ability-options-panel hidden">
-            <h2>Select an Ability</h2>
-            <div id="ability-options" class="ability-options horizontal-options"></div>
-            <button id="confirm-ability">Confirm Ability</button>
-        </div>
-
-        <div class="settings-panel">
-          <label><input type="checkbox" id="toggle-duplicates-pokemon"> Allow duplicate Pokémon</label><br>
-          <label><input type="checkbox" id="toggle-duplicates-abilities"> Allow duplicate abilities</label><br>
-          <label><input type="checkbox" id="toggle-adult-pokemon" checked> Enable adult Pokémon</label>
-        </div>
+    <!-- Ability Selection Panel -->
+    <div id="ability-selection" class="ability-options-panel hidden">
+        <h2>Select an Ability</h2>
+        <div id="ability-options" class="horizontal-options"></div>
+        <button id="confirm-ability">Confirm Ability</button>
     </div>
 
     <!-- Team Panel -->
@@ -43,8 +45,6 @@
     </div>
 </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
-
-
