@@ -34,6 +34,12 @@ function showRandomPokemon() {
 function selectPokemon(poke) {
     selectedPokemon = poke;
     showAbilities(poke);
+
+    // Disable all Pokémon cards
+    document.querySelectorAll('.pokemon-card').forEach(card => {
+        card.style.pointerEvents = 'none'; // disables click
+        card.style.opacity = '0.6';       // visually show disabled
+    });
 }
 
 // Show 3 random abilities
@@ -69,14 +75,23 @@ function selectAbility(ab, card) {
 }
 
 // Confirm ability selection
-document.getElementById('confirm-ability').onclick = () => {
-    if(selectedPokemon && selectedAbility) {
+#document.getElementById('confirm-ability').onclick = () => {
+    if(selectedPokemon && selectedAbility){
         if(team.length < 6){
             team.push({pokemon: selectedPokemon, ability: selectedAbility});
             updateTeamPanel();
+
+            // Reset selections
             selectedPokemon = null;
             selectedAbility = null;
             document.getElementById('ability-selection').classList.add('hidden');
+
+            // Re-enable Pokémon cards
+            document.querySelectorAll('.pokemon-card').forEach(card => {
+                card.style.pointerEvents = 'auto';
+                card.style.opacity = '1';
+            });
+
             showRandomPokemon();
         }
     }
@@ -109,4 +124,5 @@ document.getElementById('reset-btn').onclick = () => {
 }
 
 fetchData();
+
 
