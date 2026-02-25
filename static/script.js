@@ -67,11 +67,10 @@ function selectPokemon(poke) {
 // Show 3 random abilities
 function showAbilities(poke) {
     const abilDiv = document.getElementById('ability-options');
-    abilDiv.innerHTML = '';
+    abilDiv.innerHTML = ''; // clear old abilities
 
     let pool = [...Object.keys(abilitiesData)];
 
-    // Remove abilities already selected if duplicates not allowed
     if (!allowDuplicateAbilities) {
         const selectedAbilities = team.map(t => t.ability);
         pool = pool.filter(ab => !selectedAbilities.includes(ab));
@@ -166,3 +165,4 @@ document.getElementById('toggle-adult-pokemon').onchange = (e) => {
 
 // Start the app
 fetchData();
+
