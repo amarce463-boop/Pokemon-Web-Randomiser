@@ -91,34 +91,30 @@ function showAbilities(poke) {
 
 // Select an ability
 function selectAbility(ab, card) {
-    selectedAbility = ab;
-    // Highlight selected ability
-    document.querySelectorAll('.ability-card').forEach(c => c.style.background = '#e0e0e0');
-    card.style.background = '#4CAF50';
-}
 
-// Confirm ability selection
-document.getElementById('confirm-ability').onclick = () => {
-    if (selectedPokemon && selectedAbility) {
-        if (team.length < 6) {
-            team.push({ pokemon: selectedPokemon, ability: selectedAbility });
-            updateTeamPanel();
+    // If already selected, confirm selection visually
+    if (selectedAbility === ab) {
+        document.querySelectorAll('.ability-card').forEach(c => {
+            c.style.background = '#e0e0e0';
+        });
 
-            // Reset selections
-            selectedPokemon = null;
-            selectedAbility = null;
-            document.getElementById('ability-selection').classList.add('hidden');
-
-            // Re-enable Pokémon cards
-            document.querySelectorAll('.pokemon-card').forEach(card => {
-                card.style.pointerEvents = 'auto';
-                card.style.opacity = '1';
-            });
-
-            showRandomPokemon();
-        }
+        card.style.background = '#4CAF50';
+        return;
     }
-};
+
+    // First tap = preview description
+    selectedAbility = ab;
+
+    const descBox = document.getElementById('ability-desc');
+    descBox.textContent = abilitiesData[ab] || "No description available";
+    descBox.classList.remove('hidden');
+
+    document.querySelectorAll('.ability-card').forEach(c => {
+        c.style.background = '#e0e0e0';
+    });
+
+    card.style.background = '#d0d0ff'; // preview color
+}
 
 // Update team panel display
 function updateTeamPanel() {
@@ -165,4 +161,5 @@ document.getElementById('toggle-adult-pokemon').onchange = (e) => {
 
 // Start the app
 fetchData();
+
 
